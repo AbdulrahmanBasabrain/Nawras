@@ -1,6 +1,6 @@
 # Nawras Project 🌊
 
-## OverView
+## Overview
 
 - Nawras is a cross-platform application designed for tourists and boat owners. It allows tourists to browse and book sea trips while giving boat owners the ability to manage trips and list their boats. The system is inspired by social media but focused on sea travel experiences.
 
