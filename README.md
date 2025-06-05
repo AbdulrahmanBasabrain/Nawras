@@ -1,4 +1,4 @@
-# Sea Trips Project 🌊
+# Nawras Project 🌊
 
 ## OverView
 
