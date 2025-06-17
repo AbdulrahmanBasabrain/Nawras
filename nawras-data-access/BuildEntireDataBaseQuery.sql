@@ -1,11 +1,12 @@
 use NawrasDB;
 
 
+
 create table continents
 (
 
-continent_id smallint not null IDENTITY(1,1) PRIMARY KEY,
-continent_name nvarchar(100) not null
+continent_id smallint IDENTITY(1,1) PRIMARY KEY,
+continent_name nvarchar(100) UNIQUE  not null
 
 );
 
@@ -13,9 +14,9 @@ continent_name nvarchar(100) not null
 create table countries
 (
 
-country_id smallint not null IDENTITY(1,1) PRIMARY KEY,
+country_id smallint IDENTITY(1,1) PRIMARY KEY,
 continent_id smallint not null references continents(continent_id),
-country_name nvarchar(255)
+country_name nvarchar(255) UNIQUE not null
 
 
 );
@@ -23,15 +24,16 @@ country_name nvarchar(255)
 create table cities
 (
 
-city_id int not null IDENTITY(1,1) PRIMARY KEY,
+city_id int IDENTITY(1,1) PRIMARY KEY,
 country_id smallint not null references countries(country_id),
 city_name nvarchar(255),
+
 
 );
 
 create table marriage_statuses
 (
-marriage_status_id smallint not null IDENTITY(1,1) PRIMARY KEY,
+marriage_status_id smallint IDENTITY(1,1) PRIMARY KEY,
 marriage_status_name nvarchar(10) not null,
 
 )
@@ -39,25 +41,24 @@ marriage_status_name nvarchar(10) not null,
 create table people
 (
 
-person_id int not null IDENTITY(1,1) PRIMARY KEY,
+person_id int IDENTITY(1,1) PRIMARY KEY,
 first_name nvarchar(255),
 father_name nvarchar(255),
 grandfather_name nvarchar(255),
 last_name nvarchar(255),
-national_id int not null,
+national_id int not null  UNIQUE ,
 date_of_birth date not null,
 gender bit not null,
 country_id smallint not null references countries(country_id),
 city_id int not null references cities(city_id),
 address_district nvarchar(500) not null,
-email nvarchar(254) not null,
-phone nvarchar (30) not null,
+email nvarchar(254) not null UNIQUE ,
+phone nvarchar (30) not null UNIQUE ,
 personal_image_path nvarchar(max) not null,
 marriage_status_id smallint not null references marriage_statuses(marriage_status_id),
 created_at datetime2 not null,
 
 )
-
 create table employees
 (
 employee_id int not null IDENTITY(1,1) PRIMARY KEY,
@@ -80,20 +81,10 @@ created_at datetime2 not null,
 
 )
 
-create table tourists
+create table standard_users
 (
-
-tourist_id int not null IDENTITY(1,1) PRIMARY KEY,
+standard_user_id int not null IDENTITY(1,1) PRIMARY KEY,
 person_id int not null references people(person_id),
-passport_number nvarchar(30) not null,
-created_at datetime2
-
-)
-
-create table user_tourists
-(
-user_tourist_id int not null IDENTITY(1,1) PRIMARY KEY,
-tourist_id int not null references tourists(tourist_id),
 username nvarchar(255) not null,
 password_hash nvarchar(255) not null,
 is_active bit not null,
@@ -102,10 +93,23 @@ created_at datetime
 
 )
 
+create table tourists
+(
+
+tourist_id int not null IDENTITY(1,1) PRIMARY KEY,
+person_id int not null references people(person_id),
+standard_user_id int not null references standard_users(standard_user_id),
+passport_number nvarchar(30) not null,
+created_at datetime2
+
+)
+
+
 create table captains
 (
 captain_id int not null IDENTITY(1,1) PRIMARY KEY,
 person_id int not null references people(person_id),
+standard_user_id int not null references standard_users(standard_user_id),
 started_sailing date not null,
 license_number nvarchar(50) not null,
 rating smallint not null,
@@ -115,48 +119,23 @@ created_at datetime2 not null,
 
 )
 
-create table user_captains
-(
-user_captain_id int not null IDENTITY(1,1) PRIMARY KEY,
-captain_id int not null references captains(captain_id),
-username nvarchar(255) not null,
-password_hash nvarchar(255) not null,
-is_active bit not null,
-permession int not null,
-created_at datetime2
 
-)
 
 create table owners
 (
 owner_id int not null IDENTITY(1,1) PRIMARY KEY,
 person_id int not null references people(person_id),
+standard_user_id int not null references standard_users(standard_user_id),
+
 is_business bit not null,
 created_at datetime2,
 number_of_assets int not null,
 
 )
 
-create table user_owners
-(
-user_owner_id int not null IDENTITY(1,1) PRIMARY KEY,
-owner_id int not null references owners(owner_id),
-username nvarchar(255) not null,
-password_hash nvarchar(255) not null,
-is_active bit not null,
-permession int not null,
-created_at datetime2
 
-)
 
-create table businesses 
-(
-business_id int not null IDENTITY(1,1) PRIMARY KEY,
-representative_owner_id int not null references owners(owner_id),
-business_name nvarchar(255) not null,
-created_at datetime2
 
-)
 
 create table vessel_types
 (
@@ -180,14 +159,6 @@ representative_owner_id int not null references owners(owner_id),
 )
 
 
-create table ownerships
-(
-ownership_id int not null IDENTITY(1,1) PRIMARY KEY,
-owner_id int not null references owners(owner_id),
-vessel_id int not null references vessels(vessel_id),
-created_at datetime2 not null
-
-)
 
 create table trip_statuses
 (

@@ -41,8 +41,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Bookings\clsBooking.cs" />
+    <Compile Include="Bookings\clsBookingStatus.cs" />
+    <Compile Include="Captins\clsCaptain.cs" />
+    <Compile Include="Employess\clsEmployees.cs" />
+    <Compile Include="Employess\clsSystemUser.cs" />
+    <Compile Include="Owners\clsOwner.cs" />
+    <Compile Include="payments\clsBillPaymentStatus.cs" />
+    <Compile Include="payments\clsBillType.cs" />
+    <Compile Include="payments\clsGeneratedBill.cs" />
+    <Compile Include="payments\clsPayment.cs" />
+    <Compile Include="payments\clsPaymentMethod.cs" />
+    <Compile Include="payments\clsPaymentStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardUsers\clsStandardUser.cs" />
+    <Compile Include="Tourists\clsTourist.cs" />
+    <Compile Include="Trips\clsTrips.cs" />
+    <Compile Include="Trips\clsTripsStatus.cs" />
+    <Compile Include="Vessels\clsVessels.cs" />
+    <Compile Include="Vessels\clsVesselType.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nawras-data-access\nawras-data-access-layer.csproj">
+      <Project>{07e365af-3843-4101-8d15-e4904189b340}</Project>
+      <Name>nawras-data-access-layer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

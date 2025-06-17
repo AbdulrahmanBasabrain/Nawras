@@ -76,5 +76,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\nawras-business-layer\nawras-business-layer.csproj">
+      <Project>{a3082c92-fa84-4c16-b78c-6b60f5951280}</Project>
+      <Name>nawras-business-layer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -41,8 +41,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BookingsData\clsBookingDataAccess.cs" />
+    <Compile Include="BookingsData\clsBookingStatusDataAccess.cs" />
+    <Compile Include="CaptinsData\clsCaptainDataAccess.cs" />
+    <Compile Include="clsDataAccessSettings.cs" />
+    <Compile Include="EmployeesData\clsEmployeeDataAccess.cs" />
+    <Compile Include="EmployeesData\clsSystemUserDataAccess.cs" />
+    <Compile Include="OwnersData\clsOwnerDataAccess.cs" />
+    <Compile Include="PaymentsData\clsBillPaymentStatusDataAccess.cs" />
+    <Compile Include="PaymentsData\clsBillTypeDataAccess.cs" />
+    <Compile Include="PaymentsData\clsGeneratedBillDataAccess.cs" />
+    <Compile Include="PaymentsData\clsPaymentDataAccess.cs" />
+    <Compile Include="PaymentsData\clsPaymentMethodDataAccess.cs" />
+    <Compile Include="PaymentsData\clsPaymentStatusDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StandardUsersData\clsStandardUserDataAccess.cs" />
+    <Compile Include="TouristsData\clsTouristDataAccess.cs" />
+    <Compile Include="TripsData\clsTripsDataAccess.cs" />
+    <Compile Include="TripsData\clsTripStatusDataAccess.cs" />
+    <Compile Include="vesselsData\clsVesselsDataAccess.cs" />
+    <Compile Include="vesselsData\clsVesselTypeDataAccess.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
