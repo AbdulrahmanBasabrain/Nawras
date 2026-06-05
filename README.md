@@ -44,8 +44,8 @@
 
 ## Tech Stack
 
-- Frontend: Angular
-- Backend: ASP.NET Web API (C#)
+- Frontend: React 
+- Backend: java
 - Database: SQL Server
 - UI Framework: Bootstrap
 
